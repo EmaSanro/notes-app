@@ -1,0 +1,31 @@
+@use '../../../styles' as *;
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.8rem 2.5rem;
+    background-color: $secondary-accent-color;
+}
+
+header h1 {
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    column-gap: 3rem;
+    align-items: center;
+    
+    & a {
+        text-decoration: none;
+        color: $primary-text-color;
+        background-color: $primary-accent-color;
+        padding: .8rem;
+        border-radius: 8px;
+
+        &:active {
+            background-color: #ffa167;
+        }
+        
+    }
+}

@@ -1,0 +1,42 @@
+<article class='note-card'>
+    <div class='title-wrapper'>
+        <h1>{{note.title}}</h1>
+        @if(!note.isArchived) {
+            <img src="archive.png" alt="Archive Icon" (click)="archiveNote(true)">
+        } @else {
+            <img src="unarchive.png" alt="Unarchive Icon" (click)="archiveNote(false)">
+        }
+    </div>
+    <p>{{note.content}}</p>
+    <div class="tags-wrapper">
+        <div>
+            <h4>Tags</h4>
+            @if(!tagClicked) {
+                <button (click)="changeToInput()">Add Tag</button>
+            } @else {
+                <div>
+                    <input type="text" name='tag' [formControl]='inputControl' minlength="5" maxlength="50"/>
+                    <button (click)="addCategoryToNote(inputControl.value, note.id)">Add</button>
+                    <button (click)="changeToInput()">Cancel</button>
+                </div>
+            }
+        </div>
+        <ul>
+            @for(category of note.categories; track category.id) {
+                <li>{{ category.name }}</li>
+            }
+        </ul>
+    </div>
+    <div class='details-wrapper'>
+        <div>
+            <h3>Created at {{note.created_at}}</h3>
+            @if(note.updated_at != null) {
+                <h3>Updated at {{note.updated_at}}</h3>
+            }
+        </div>
+        <div class='btn-wrapper'>
+            <button class='edit-btn' (click)="editNote()">Edit</button>
+            <button class='delete-btn' title='DELETE' (click)="deleteNote()"><img src="delete.png" alt="Delete icon"></button>
+        </div>
+    </div>
+</article>

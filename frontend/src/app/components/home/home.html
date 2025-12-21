@@ -1,0 +1,66 @@
+<main>
+    <div class='welcome'>
+        <h1>Welcome to Note App!</h1>
+        <h3>Here you can list all your to-do tasks. You can modify, delete, and even archive them.</h3>
+    </div>
+
+    <div class='recent-notes-title'>
+        <h2>Your recent notes</h2>
+        <div>
+            @if(currentFilter != '') {
+                <div class='current-filter'>
+                    <img (click)="deleteFilter()" src="x.png" alt="Delete filter">
+                    <p>{{currentFilter}}</p>
+                </div>
+            }
+            <div class='add-note-wrapper' (click)="showFormCreate()">
+                <img src="add.png" alt="Add Icon">
+                <button>Add Note</button>
+            </div>
+            <button (click)="showCategoriesFunc()">Filter by tag</button>
+        </div>
+        @if(showCategories) {
+            <section class='tags-wrapper'>
+                <ul>
+                    @if(categories$ | async; as categories) {
+                        @for (cat of categories; track cat.id) {
+                            <button (click)="getNotesByCategory(cat.name)">{{ cat.name }}</button>
+                        }
+                    }
+                </ul>
+            </section>
+        }
+    </div>
+    @if(showForm) {
+        <section class='create-note'>
+            <form [formGroup]="formCreateNote">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" name='title' formControlName='title' placeholder='Title of the note....'/>
+                    @if(getTitle()?.invalid && (getTitle()?.dirty || getTitle()?.touched) ) {
+                        <p class='error'>Title is required! Max characters: 100</p>
+                    }
+                </div>
+                <div>
+                    <label for="content">Content</label>
+                    <textarea name="content" formControlName='content' rows='5' placeholder='Put the details of your task here'></textarea>
+                    @if(getContent()?.invalid && (getContent()?.dirty || getContent()?.touched) ) {
+                        <p class='error'>Content is required! Min characters: 5</p>
+                    }
+                </div>
+                <button [disabled]="formCreateNote.invalid" type='submit' (click)="createNote()">Save</button>
+            </form>
+        </section>
+    }
+    <section class='note-list'>
+        @if(notes$ | async; as notes) {
+            @if(notes.length == 0) {
+                <h1 class="nothing-title">Nothing to show!</h1>
+            } @else {
+                @for(note of notes; track note.id) {
+                    <app-note-card [note]="note"></app-note-card>
+                }
+            }
+        }
+    </section>
+</main>

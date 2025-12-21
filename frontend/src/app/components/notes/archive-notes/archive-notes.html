@@ -1,0 +1,12 @@
+<h1>Your Archived Notes</h1>
+<section class="note-list">
+    @if(notes$ | async; as notes) {
+        @if(notes.length == 0) {
+            <h1 class='nothing-title'>Nothing to show!</h1>
+        } @else {
+            @for(note of notes; track note.id) {
+                <app-note-card [note]='note'></app-note-card>
+            }
+        }
+    }
+</section>

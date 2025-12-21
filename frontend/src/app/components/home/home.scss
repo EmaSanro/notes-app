@@ -1,0 +1,188 @@
+@use '../../../styles' as *;
+
+main .welcome {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: $secondary-accent-color;
+}
+
+.nothing-title {
+    border-radius: 8px;
+    background-color: $secondary-accent-color;
+    padding: 1rem 4rem;
+}
+
+.recent-notes-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .7rem 3rem;
+    background-color: $secondary-accent-color;
+}
+
+.recent-notes-title > div {
+    display: flex;
+    column-gap: 2rem;
+}
+button {
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    background-color: $primary-accent-color;
+    border-radius: 8px;
+    width: 8rem;
+
+    &:active {
+        background-color: #ffa167;
+    }
+}
+
+.recent-notes-title .add-note-wrapper {
+    display: flex;
+    width: 10rem;
+    align-items: center;
+    justify-content: space-around;
+    background-color: $primary-accent-color;
+    padding: .5rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:active {
+        & button {
+            background-color: #ffa167;
+        }
+        background-color: #ffa167;
+    }
+}
+
+.recent-notes-title img {
+    width: 32px;
+}
+
+.recent-notes-title .tags-wrapper {
+    width: 40rem;
+    padding: 1rem 2rem;
+    position: absolute;
+    top: 22.5rem;
+    right: 0rem;
+    background-color: $secondary-accent-color;
+    border-bottom-left-radius: 8px;
+}
+
+.recent-notes-title .tags-wrapper ul {
+    display: grid;
+    gap: .6rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+
+    & button {
+        max-width: 8rem;
+        padding: .3rem .2rem;
+        background-color: $bg-card-color;
+
+        &:active {
+            background-color: #cecece;
+        }
+    }
+}
+
+.recent-notes-title .tags-wrapper > button {
+    position: relative;
+    height: 2rem;
+    margin-top: 2rem;
+    left: 27.5rem;
+}
+
+.note-list {
+    display: grid;
+    column-gap: 1rem;
+    margin: 3rem 0;
+    place-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.create-note {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.create-note form {
+    background-color: $secondary-accent-color;
+    display: flex;
+    width: 35%;
+    padding: 1rem 4rem;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.create-note form div {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+}
+
+.create-note form div input, .create-note form div textarea { 
+    border: none;
+    padding: 0 1rem;
+    border: 2px solid $primary-bg-color;
+    border-radius: 6px;
+    outline: none;
+}
+
+.create-note form div input {
+    height: 2.5rem;
+}
+
+.create-note form div textarea {
+    padding-top: 1rem;
+    resize: none;
+}
+
+.create-note form button {
+    border: none;
+    cursor: pointer;
+    background-color: $primary-accent-color;
+    font-size: 1rem;
+    height: 2rem;
+    width: 10rem;
+    border-radius: 8px;
+    align-self: end;
+
+    &:active {
+        background-color: #ffa167;
+    }
+
+    &:disabled {
+        cursor: no-drop;
+        background-color: #ffcbab;
+    }
+}
+
+.current-filter {
+    display: flex;
+    align-items: center;
+    column-gap: .7rem;
+    background-color: #d8d3d3;
+    padding: 0 .7rem;
+    border-radius: 8px;
+
+    & p {
+        color: #727272;
+        user-select: none;
+    }
+    
+}
+
+.current-filter img {
+    width: 1rem;
+    cursor: pointer;
+}
+
+.error {
+    color: rgb(156, 0, 0);
+    font-size: .9rem;
+}

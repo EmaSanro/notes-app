@@ -1,0 +1,35 @@
+<div class='note-wrapper'>
+    <h2>Edit Note</h2>
+    <form [formGroup]='editForm'>
+        <div class='title-input'>
+            <label for="title">Title</label>
+            <input formControlName='title' type="text" name='title' maxlength="100"/>
+        </div>
+        <div class='content-input'>
+            <label for="content">Content</label>
+            <textarea formControlName='content' type="text" name='content'></textarea>
+        </div>
+        <div class='tags-wrapper'>
+            <label>Tags</label>
+            @if(note | async; as note) {
+                @for(category of note.categories; track category.id) {
+                    @if(categoriesToDelete.includes(category.id)) {
+                        <div class='tag-wrapper' [class.disabled]='isSelected(category.id)'>
+                            <img src="x.png" alt="Delete tag">
+                            <p>{{category.name}}</p>
+                        </div>
+                    } @else {
+                        <div class='tag-wrapper'>
+                            <img src="x.png" alt="Delete tag" (click)="markToDelete(category.id)">
+                            <p>{{category.name}}</p>
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <div class='btn-wrapper'>
+            <button type='button' [routerLink]="['/']">Cancel</button>
+            <button type='submit' [disabled]="editForm.invalid" (click)="saveNote()">Save</button>
+        </div>
+    </form>
+</div>

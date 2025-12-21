@@ -1,0 +1,122 @@
+@use '../../../../styles' as *;
+
+.note-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.note-wrapper form, .note-wrapper h2 {
+    width: 50%;
+    background-color: $bg-card-color;
+}
+
+.note-wrapper h2 {
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 2rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid $secondary-accent-color;
+}
+
+.note-wrapper > form {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    row-gap: 2rem;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.title-input, .content-input, .btn-wrapper {
+    row-gap: .3rem;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.note-wrapper form div input, .note-wrapper form div textarea {
+    color: $primary-text-color;
+    background-color: $primary-bg-color;
+    padding-left: 1rem;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+
+    &:focus {
+        border: 1px solid $secondary-accent-color;
+    }
+}
+
+.note-wrapper form div input {
+    height: 3rem;
+}
+
+.note-wrapper form div textarea {
+    height: 10rem;
+    padding-top: .5rem;
+    resize: none;
+}
+
+.note-wrapper form .btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    column-gap: 4rem;
+}
+
+.note-wrapper form .btn-wrapper button {
+    cursor: pointer;
+    height: 2rem;
+    width: 6rem;
+    border: none;
+    background-color: $primary-accent-color;
+    border-radius: 8px;
+
+    &:active {
+        background-color: #ffa167;
+    }
+}
+
+.tags-wrapper {
+    width: 75%;
+    display: grid;
+    gap: 1rem;
+    grid-template-areas: "title title title"
+                         "tag tag tag"
+                         "tag tag tag";
+}
+
+.tags-wrapper label {
+    grid-area: title;
+}
+
+.tags-wrapper .tag-wrapper {
+    padding: .4rem;
+    width: fit-content;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    column-gap: .3rem;
+    user-select: none;
+    background-color: #ddd;
+}
+
+.tags-wrapper .tag-wrapper img {
+    width: .8rem;
+    cursor: pointer;
+}
+
+.tags-wrapper > div.disabled {
+    user-select: none;
+    background-color: #fc8a8a;
+
+    & > img {
+        cursor: default;
+    }
+}

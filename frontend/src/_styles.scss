@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+// Principal (Fondo)	
+$primary-bg-color: #EBE8D8; // (Beige Cremoso) Fondo de la aplicación. Imita un escritorio tranquilo o una pared de color claro.
+// Texto/Contraste
+$primary-text-color: #3D3437; // (Marrón Carbón) Cuerpo del texto y títulos. Se siente como tinta sobre papel.
+// Fondo de Nota	
+$bg-card-color: #FCF8F3; // (Blanco Roto) El "papel" de la nota. Es casi blanco, pero con un toque cálido.
+// Acento (Primario)
+$primary-accent-color: #FF8C42; // (Naranja Suave)	Botones de acción (ej. "Crear Nota"). Es enérgico pero no agresivo.
+// Acento (Secundario)	
+$secondary-accent-color: #8A7969; // (Gris Topo) Bordes de tarjetas, tooltips, iconos de navegación inactivos.
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', Roboto;
+    color: $primary-text-color;
+}
+
+body {
+    background-color: $primary-bg-color;
+}

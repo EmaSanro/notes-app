@@ -1,0 +1,122 @@
+@use "../../../../styles" as *;
+
+.note-card {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 15% 50% 25% 10%;
+    padding: 1rem;
+    width: 25rem;
+    height: 30rem;
+    background-color: $bg-card-color;
+    border: 1px solid $secondary-accent-color;
+    border-radius: 6px;
+}
+
+.title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $secondary-accent-color;
+}
+
+.note-card p {
+    margin-top: .5rem;
+}
+
+.title-wrapper img {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+}
+
+.tags-wrapper > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $secondary-accent-color;
+    padding-bottom: .2rem;
+}
+
+.tags-wrapper div button {
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    background-color: $primary-accent-color;
+    color: $primary-text-color;
+    cursor: pointer;
+    padding: .3rem .5rem;
+    
+    &:active {
+        background-color: #ffa167;
+    }
+}
+
+.tags-wrapper > div > div {
+    display: flex;
+    column-gap: .5rem;
+
+    & input {
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        padding-left: .6rem;
+
+        &:focus {
+            outline: 1px solid $secondary-accent-color;
+        }
+    }
+}
+
+.tags-wrapper ul {
+    margin-top: .3rem;
+    padding-left: .3rem;
+    list-style: none;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+    max-height: 60%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    & li {
+        max-width: 6rem;
+        color: $secondary-accent-color;
+    }
+}
+
+.details-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details-wrapper .btn-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.details-wrapper button {
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.details-wrapper .edit-btn {
+    padding: .5rem .7rem;
+    background-color: $primary-accent-color;
+    border-radius: 8px;
+
+    &:active {
+        background-color: #ffa167;
+    }
+}
+
+.details-wrapper .delete-btn {
+    background: transparent;
+
+    & img {
+        width: 28px;
+    }
+}
