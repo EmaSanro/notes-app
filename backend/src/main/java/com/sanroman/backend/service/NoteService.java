@@ -31,21 +31,37 @@ public class NoteService {
     private CategoryService catService;
 
     public List<NoteResponseDTO> getActiveNotes() {
-        return repo.findByIsArchived(false).stream().map(note -> note.toResponseDTO()).toList();
+        try {
+            return repo.findByIsArchived(false).stream().map(note -> note.toResponseDTO()).toList();
+        } catch (Exception e) {
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
     
     public List<NoteResponseDTO> getArchivedNotes() {
-        return repo.findByIsArchived(true).stream().map(note -> note.toResponseDTO()).toList();
+        try {
+            return repo.findByIsArchived(true).stream().map(note -> note.toResponseDTO()).toList();
+        } catch (Exception e) {
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
 
     public List<NoteResponseDTO> getRecentNotes() {
-        return repo.findByRecentNotes().stream().map(n -> n.toResponseDTO()).toList();
+        try {
+            return repo.findByRecentNotes().stream().map(n -> n.toResponseDTO()).toList();
+        } catch (Exception e) {
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
 
     public NoteResponseDTO getByID(Long id) {
-        return repo.findById(id)
-               .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Note Not found with this id"))
-               .toResponseDTO();
+        try {
+            return repo.findById(id)
+                    .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Note Not found with this id"))
+                    .toResponseDTO();
+        } catch (Exception e) {
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
 
     public List<NoteResponseDTO> getByCategory(String category) {
@@ -64,7 +80,7 @@ public class NoteService {
             repo.saveAndFlush(note);
             return note.toResponseDTO();
         } catch (Exception e) {
-            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, "Unexpected Error");
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
 
@@ -73,7 +89,7 @@ public class NoteService {
             Note n = new Note(note.title(), note.content());
             return repo.save(n).toResponseDTO();
         } catch (Exception e) {
-            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, "Unexpected Error");
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
 
@@ -85,7 +101,7 @@ public class NoteService {
             n.setUpdated_at(LocalDate.now());
             return repo.saveAndFlush(n).toResponseDTO();
         } catch (Exception e) {
-            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, "Unexpected Error");
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
 
@@ -126,10 +142,14 @@ public class NoteService {
     }
 
     public NoteResponseDTO removeCategories(Long idNote, List<Long> categoryIds) {
-        Note n = repo.findById(idNote).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Note not found"));
-
-        n.getCategories().removeIf(category -> categoryIds.contains(category.getId()));
-
-        return repo.saveAndFlush(n).toResponseDTO();
+        try {
+            Note n = repo.findById(idNote).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Note not found"));
+    
+            n.getCategories().removeIf(category -> categoryIds.contains(category.getId()));
+    
+            return repo.saveAndFlush(n).toResponseDTO();
+        } catch (Exception e) {
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
 }

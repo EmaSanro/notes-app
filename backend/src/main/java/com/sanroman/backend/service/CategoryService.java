@@ -1,5 +1,6 @@
 package com.sanroman.backend.service;
 
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 import java.util.List;
@@ -18,18 +19,34 @@ public class CategoryService {
     private CategoryRepository repo;
 
     public List<CategoryDTO> getAll() {
-        return repo.findAll().stream().map(c -> c.toDTO()).toList();
+        try {
+            return repo.findAll().stream().map(c -> c.toDTO()).toList();
+        } catch (Exception e) {
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
 
     public Category getById(Long id) {
-        return repo.findById(id).orElseThrow(()-> new ResponseStatusException(NOT_FOUND, "Category not found"));
+        try {
+            return repo.findById(id).orElseThrow(()-> new ResponseStatusException(NOT_FOUND, "Category not found"));
+        } catch (Exception e) {
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
 
     public Category getByName(String name) {
-        return repo.findByCategory(name);
+        try {
+            return repo.findByCategory(name);
+        } catch (Exception e) {
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
 
     public List<CategoryDTO> getAllUsedCategories() {
-        return repo.findAllUsedCategories().stream().map(c -> c.toDTO()).toList();
+        try {
+            return repo.findAllUsedCategories().stream().map(c -> c.toDTO()).toList();
+        } catch (Exception e) {
+            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
 }
