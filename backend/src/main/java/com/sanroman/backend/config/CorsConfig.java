@@ -14,12 +14,15 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:4200")
+                        .allowedOrigins(
+                            "http://localhost:4200",
+                            "https://notes-app-front-k10q.onrender.com"
+                        )
                         .allowedMethods("*")
                         // 1. Permite todas las cabeceras (incluyendo Authorization y Content-Type)
                         .allowedHeaders("*") 
                         // 2. Permite el envío de cookies o credenciales de autenticación
-                        .allowCredentials(true);
+                        .allowCredentials(false);
             }
         };
     }

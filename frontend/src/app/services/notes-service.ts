@@ -3,14 +3,11 @@ import { Injectable } from '@angular/core';
 import { Note, NoteCreateDTO } from '../models/Note';
 import { Observable } from 'rxjs';
 import { createCategory } from '../models/Category';
-import { environment } from '../../environments/environment-prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotesService {
-
-  private apiUrl = environment.API_BASE_URL;
 
   constructor(private http: HttpClient) {}
 
