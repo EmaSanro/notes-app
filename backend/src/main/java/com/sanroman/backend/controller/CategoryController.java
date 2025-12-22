@@ -18,7 +18,7 @@ public class CategoryController {
     private CategoryService service;
 
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<CategoryDTO> getAllUsedCategories() {
         return service.getAllUsedCategories();
     }
