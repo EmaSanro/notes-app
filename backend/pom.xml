@@ -60,12 +60,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- Dependency to read .env -->
-		<dependency>
-			<groupId>io.github.cdimascio</groupId>
-			<artifactId>dotenv-java</artifactId>
-			<version>3.0.0</version>
-		</dependency>
 		<!-- Dependency for documentation Swagger -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
