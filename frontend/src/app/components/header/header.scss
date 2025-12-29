@@ -3,6 +3,7 @@
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1.8rem 2.5rem;
     background-color: $secondary-accent-color;
 }
@@ -12,9 +13,8 @@ header h1 {
 }
 
 nav {
-    display: flex;
+    display: none;
     column-gap: 3rem;
-    align-items: center;
     
     & a {
         text-decoration: none;
@@ -22,10 +22,48 @@ nav {
         background-color: $primary-accent-color;
         padding: .8rem;
         border-radius: 8px;
+        text-align: center;
 
         &:active {
             background-color: #ffa167;
         }
         
+    }
+}
+
+.menu-icon {
+    display: block;
+    cursor: pointer;
+}
+
+.show {
+    background-color: $secondary-accent-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 15rem;
+    height: 10rem;
+    padding: 1rem;
+    border-radius: 8px;
+    position: absolute;
+    right: 0rem;
+    top: 7rem;
+}
+
+@media (width > 720px) {
+    nav {
+        display: flex !important;
+    }
+
+    // .show {
+    //     display: none;
+    // }
+
+    // .hide {
+    //     display: flex;
+    // }
+
+    .menu-icon {
+        display: none;
     }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, output, Output } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { Note } from '../../../models/Note';
 import { NotesService } from '../../../services/notes-service';
 import { Router } from '@angular/router';

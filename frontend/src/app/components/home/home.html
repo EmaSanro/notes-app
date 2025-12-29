@@ -19,18 +19,18 @@
             </div>
             <button (click)="showCategoriesFunc()">Filter by tag</button>
         </div>
-        @if(showCategories) {
-            <section class='tags-wrapper'>
-                <ul>
-                    @if(categories$ | async; as categories) {
-                        @for (cat of categories; track cat.id) {
-                            <button (click)="getNotesByCategory(cat.name)">{{ cat.name }}</button>
-                        }
-                    }
-                </ul>
-            </section>
-        }
     </div>
+    @if(showCategories) {
+        <section class='tags-wrapper'>
+            <ul>
+                @if(categories$ | async; as categories) {
+                    @for (cat of categories; track cat.id) {
+                        <button (click)="getNotesByCategory(cat.name)">{{ cat.name }}</button>
+                    }
+                }
+            </ul>
+        </section>
+    }
     @if(showForm) {
         <section class='create-note'>
             <form [formGroup]="formCreateNote">
