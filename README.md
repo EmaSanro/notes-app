@@ -49,7 +49,7 @@ To run this application, you need the following tools installed on your system:
 - npm **10.x**
 - Java JDK **21**
 - Maven **3.9.x**
-- MySQL **8.0**
+- PostgreSQL **17.6.1.063**
 
 ---
 
@@ -59,5 +59,11 @@ The application can be started with a single command.
 
 ### 1️⃣ Give execution permissions to the script (Linux / macOS)
 
-```bash
+```
 chmod +x run.sh
+```
+
+### 🔗 Visit the website
+The application is hosted on Render, both its frontend and backend, and the database is hosted by Supabase.
+
+[**Try it!**](https://notes-app-front-k10q.onrender.com/)
